@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiman Ali Sehgal - Literary Analyst & Reviewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Crimson Text"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        parchment: '#F9F8F6',
+                        ink: '#1C1917',
+                        crimson: '#7F1D1D',
+                        sepia: '#43302B'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F9F8F6;
+            color: #1C1917;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .serif-text {
+            font-family: '"Crimson Text"', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 400px;
+        }
+        .portfolio-btn.active {
+            border-left: 4px solid #7F1D1D;
+            background-color: #f5f5f4;
+            font-weight: 600;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Chosen Palette: Warm Neutrals with Crimson/Sepia Accents (Parchment #F9F8F6, Ink #1C1917, Crimson #7F1D1D) -->
+<!-- Application Structure Plan: A clean, single-page professional dashboard structured to present Aiman's analytical mindset. It opens with an introductory hero section. The second section uses a radar chart to visualize her core expertise, providing immediate quantitative understanding of her qualitative skills. The third section is an interactive 'Literary Vault' (portfolio) using a split-pane layout for exploring projects without page reloads. Finally, a grid organizes genre specializations and strengths. This structure prioritizes interactive exploration and professional aesthetic over a traditional static document. -->
+<!-- Visualization & Content Choices: Resume Data -> Inform/Organize -> Interactive Dashboard Layout & Radar Chart -> Clickable portfolio items, hoverable genre cards -> Justification: A literary analyst's profile benefits from an 'archival' aesthetic mixed with modern interactivity to show both her appreciation for deep storytelling and her technical presentation skills. Radar chart (Chart.js) provides a quick visual summary of her multi-faceted expertise. NO SVG/Mermaid used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <header class="mb-16 text-center border-b border-stone-300 pb-12">
+        <div class="inline-block mb-4 text-crimson text-4xl">✒️</div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight">Aiman Ali Sehgal</h1>
+        <p class="text-xl md:text-2xl text-sepia font-serif italic mb-6">Freelance Book Reviewer & Literary Analyst</p>
+        
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-medium tracking-wider uppercase text-stone-600 mb-8">
+            <span class="bg-stone-200 px-3 py-1 rounded">Karachi, Pakistan</span>
+            <span class="bg-stone-200 px-3 py-1 rounded">aimanalisehgal@gmail.com</span>
+        </div>
+
+        <p class="max-w-3xl mx-auto text-lg leading-relaxed text-stone-700">
+            Analytical writer and literary enthusiast specializing in <strong class="text-ink">Psychological Horror, Dark Academia, and Suspense</strong>. 
+            Expert in deconstructing complex character archetypes and atmospheric world-building. Proficient in identifying narrative tension and symbolic subtexts, with a particular focus on non-conventional and tragic endings that challenge the reader’s perspective.
+        </p>
+    </header>
+
+    <main>
+        
+        <section class="mb-20">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4 text-crimson">The Analytical Mindset</h2>
+                <p class="max-w-2xl mx-auto text-stone-600">
+                    This section visualizes my core proficiencies as a literary analyst. The radar chart below breaks down the key dimensions of my expertise, demonstrating a balanced approach between structural narrative breakdown and the evaluation of atmospheric and thematic elements. Hover over the data points to see the specific focus areas.
+                </p>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                <div class="chart-container">
+                    <canvas id="expertiseChart"></canvas>
+                </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-stone-700">
+                    <div>
+                        <h4 class="font-bold text-ink mb-1 uppercase tracking-wider text-xs">Narrative Analysis</h4>
+                        <p>Deep understanding of story arcs, pacing, and the "Shadow Self" archetype.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-ink mb-1 uppercase tracking-wider text-xs">Atmospheric Writing</h4>
+                        <p>Skilled in creating and evaluating sensory-rich environments (Gothic and Noir aesthetics).</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-ink mb-1 uppercase tracking-wider text-xs">Thematic Critique</h4>
+                        <p>Specialized in analyzing themes of isolation, psychological distortion, and moral ambiguity.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-ink mb-1 uppercase tracking-wider text-xs">English Proficiency</h4>
+                        <p>High-level professional fluency in English for nuanced and impactful reviewing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-4 text-crimson">The Literary Archive</h2>
+                <p class="text-stone-600 max-w-3xl">
+                    Explore my selected works and ongoing projects. This interactive archive details my experience as both a creator and an analyst. Click on the project titles on the left to uncover the critical themes, methodologies, and achievements associated with each narrative exploration.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-8 bg-white border border-stone-200 rounded-lg overflow-hidden shadow-sm">
+                
+                <div class="w-full md:w-1/3 bg-stone-50 border-r border-stone-200" id="portfolio-nav">
+                    
+                </div>
+                
+                <div class="w-full md:w-2/3 p-8 min-h-[300px] flex items-center" id="portfolio-display">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            
+            <div>
+                <h2 class="text-2xl font-bold mb-6 border-b border-stone-300 pb-2 text-sepia">Genre Specialization</h2>
+                <p class="text-stone-600 mb-6 text-sm">A focus on narratives that explore the darker, more complex facets of human psychology and history.</p>
+                
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 border border-crimson text-crimson rounded hover:bg-crimson hover:text-white transition-colors cursor-default select-none shadow-sm font-serif italic">Psychological Thrillers & Horror</span>
+                    <span class="px-4 py-2 border border-stone-400 text-stone-700 rounded hover:bg-stone-100 transition-colors cursor-default select-none shadow-sm font-serif italic">Dark Academia & Gothic Fiction</span>
+                    <span class="px-4 py-2 border border-stone-400 text-stone-700 rounded hover:bg-stone-100 transition-colors cursor-default select-none shadow-sm font-serif italic">Historical Mystery & Deep Lore</span>
+                    <span class="px-4 py-2 border border-stone-400 text-stone-700 rounded hover:bg-stone-100 transition-colors cursor-default select-none shadow-sm font-serif italic">Speculative Fiction (Ambiguous Endings)</span>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold mb-6 border-b border-stone-300 pb-2 text-sepia">Technical & Personal Strengths</h2>
+                <p class="text-stone-600 mb-6 text-sm">The methodological and personal traits that ensure meticulous and constructive literary critique.</p>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-crimson mr-3 mt-1">✦</span>
+                        <div>
+                            <strong class="text-ink">Objective Critique:</strong>
+                            <span class="text-stone-600 text-sm block">Ability to provide honest, constructive feedback on complex manuscripts.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-crimson mr-3 mt-1">✦</span>
+                        <div>
+                            <strong class="text-ink">Research & Scripting:</strong>
+                            <span class="text-stone-600 text-sm block">Deep-dive investigative research into historical and literary themes.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-crimson mr-3 mt-1">✦</span>
+                        <div>
+                            <strong class="text-ink">Self-Directed Learner & Detail Oriented:</strong>
+                            <span class="text-stone-600 text-sm block">Highly motivated to master new frameworks; meticulous approach to identifying subtexts.</span>
+                        </div>
+                    </li>
+                     <li class="flex items-start">
+                        <span class="text-crimson mr-3 mt-1">✦</span>
+                        <div>
+                            <strong class="text-ink">Digital Presentation:</strong>
+                            <span class="text-stone-600 text-sm block">Proficient in Figma and Canva for creating visually aligned literary portfolios.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 border-t border-stone-300 pt-8 text-center text-stone-500 text-sm">
+        <p>Document Architecture structured for Interactive Exploration.</p>
+        <p class="mt-2">Based on the Professional Profile of Aiman Ali Sehgal.</p>
+    </footer>
+
+</div>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        const ctx = document.getElementById('expertiseChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Narrative Analysis', 
+                    'Atmospheric Writing', 
+                    'Thematic Critique', 
+                    'Critical Reviewing', 
+                    'Deep Research', 
+                    'English Nuance'
+                ],
+                datasets: [{
+                    label: 'Proficiency Level',
+                    data: [95, 90, 95, 85, 80, 90],
+                    backgroundColor: 'rgba(127, 29, 29, 0.2)', 
+                    borderColor: 'rgba(127, 29, 29, 1)',
+                    pointBackgroundColor: 'rgba(127, 29, 29, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(127, 29, 29, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: {
+                            font: { family: 'Inter', size: 11, weight: '600' },
+                            color: '#1C1917'
+                        },
+                        ticks: {
+                            display: false,
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1C1917',
+                        titleFont: { family: 'Inter', size: 13 },
+                        bodyFont: { family: 'Inter', size: 12 },
+                        padding: 10,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                const tooltips = {
+                                    'Narrative Analysis': 'Deconstructing arcs & the Shadow Self.',
+                                    'Atmospheric Writing': 'Crafting Gothic/Noir environments.',
+                                    'Thematic Critique': 'Analyzing isolation & moral ambiguity.',
+                                    'Critical Reviewing': 'Evaluating structural integrity.',
+                                    'Deep Research': 'Historical & literary theme investigation.',
+                                    'English Nuance': 'Professional, impactful communication.'
+                                };
+                                return tooltips[context.label] || 'High Proficiency';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        
+        const portfolioData = [
+            {
+                id: 'obsidian',
+                title: '"The Obsidian Mirror"',
+                role: 'Author & Narrative Architect',
+                icon: '📖',
+                content: `
+                    <h3 class="text-2xl font-bold font-serif text-ink mb-2">"The Obsidian Mirror"</h3>
+                    <p class="text-crimson font-medium mb-6 uppercase tracking-widest text-xs">Author & Narrative Architect</p>
+                    <div class="space-y-4 text-stone-700">
+                        <p>Authored a psychological suspense short story centered on themes of identity loss and the "unreliable reflection."</p>
+                        <div class="bg-stone-50 p-4 border-l-4 border-crimson my-4 italic font-serif">
+                            <strong>Key Achievement:</strong> Developed a haunting, cyclical narrative that avoids traditional "happy endings," focusing instead on atmospheric dread and psychological entrapment.
+                        </div>
+                        <p>Demonstrated a keen ability to use symbolism (The Black Mirror) as a metaphor for the human psyche and exhaustion.</p>
+                    </div>
+                `
+            },
+            {
+                id: 'analyst',
+                title: 'Independent Literary Analysis',
+                role: 'Literary Analyst & Storyteller',
+                icon: '🔍',
+                content: `
+                    <h3 class="text-2xl font-bold font-serif text-ink mb-2">Independent Literary Analysis</h3>
+                    <p class="text-crimson font-medium mb-6 uppercase tracking-widest text-xs">Literary Analyst & Storyteller</p>
+                    <div class="space-y-4 text-stone-700">
+                        <p>Dedicated to exploring complex narrative structures beyond surface-level reading.</p>
+                        <ul class="list-disc pl-5 space-y-2 mt-4">
+                            <li>Explored the "anti-hero" and "tragic loop" structures in historical and fictional contexts.</li>
+                            <li>Analyzed symbolic elements in literature, such as the use of visual metaphors (e.g., "blue curtains" or "shadow entities") to represent mental states and isolation.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 'vault',
+                title: 'THEVAULTOFLOSTFILES',
+                role: 'Creative Content Specialist',
+                icon: '🏛️',
+                content: `
+                    <h3 class="text-2xl font-bold font-serif text-ink mb-2">THEVAULTOFLOSTFILES</h3>
+                    <p class="text-crimson font-medium mb-6 uppercase tracking-widest text-xs">Creative Content Specialist</p>
+                    <div class="space-y-4 text-stone-700">
+                        <p>A specialized digital platform focusing on presenting deep-history and obscure narratives to an engaged audience.</p>
+                        <ul class="list-disc pl-5 space-y-2 mt-4">
+                            <li>Curate and script deep-history narratives for a specialized digital audience.</li>
+                            <li>Research complex historical incidents, ensuring a compelling flow that balances historical accuracy with narrative tension.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        ];
+
+        const navContainer = document.getElementById('portfolio-nav');
+        const displayContainer = document.getElementById('portfolio-display');
+
+        function renderPortfolioItem(index) {
+            const item = portfolioData[index];
+            
+            displayContainer.innerHTML = `<div class="fade-in w-full">${item.content}</div>`;
+            
+            document.querySelectorAll('.portfolio-btn').forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        
+        portfolioData.forEach((item, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'portfolio-btn w-full text-left p-5 border-b border-stone-200 transition-all duration-200 text-stone-600 hover:text-ink focus:outline-none';
+            btn.innerHTML = `
+                <div class="flex items-center">
+                    <span class="text-xl mr-3 opacity-70">${item.icon}</span>
+                    <div>
+                        <div class="font-serif font-bold text-lg leading-tight">${item.title}</div>
+                        <div class="text-xs uppercase tracking-wider mt-1 opacity-70">${item.role}</div>
+                    </div>
+                </div>
+            `;
+            btn.addEventListener('click', () => renderPortfolioItem(index));
+            navContainer.appendChild(btn);
+        });
+
+        
+        renderPortfolioItem(0);
+
+    });
+</script>
+
+</body>
+</html>
